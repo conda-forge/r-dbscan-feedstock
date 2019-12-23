@@ -1,4 +1,4 @@
-{% set version = '1.1-4' %}
+{% set version = "1.1-5" %}
 {% set posix = 'm2-' if win else '' %}
 {% set native = 'm2w64-' if win else '' %}
 
@@ -10,7 +10,7 @@ source:
   url:
     - {{ cran_mirror }}/src/contrib/dbscan_{{ version }}.tar.gz
     - {{ cran_mirror }}/src/contrib/Archive/dbscan/dbscan_{{ version }}.tar.gz
-  sha256: 41f8175b2c9453802c0838b96d8917b35d1294beaa261fb6446042adbb7745df
+  sha256: 135eebfff327631e4e4b98119405e3550d096b882578f64b39425955ab4d02ee
 
 build:
   merge_build_host: True  # [win]
