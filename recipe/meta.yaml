@@ -1,4 +1,4 @@
-{% set version = "1.1-5" %}
+{% set version = "1.1-6" %}
 {% set posix = 'm2-' if win else '' %}
 {% set native = 'm2w64-' if win else '' %}
 
@@ -10,11 +10,11 @@ source:
   url:
     - {{ cran_mirror }}/src/contrib/dbscan_{{ version }}.tar.gz
     - {{ cran_mirror }}/src/contrib/Archive/dbscan/dbscan_{{ version }}.tar.gz
-  sha256: 135eebfff327631e4e4b98119405e3550d096b882578f64b39425955ab4d02ee
+  sha256: f0b10c0369edfa69e888b8288bca787f7c51cc4af5f3008f03aea1b82f20be66
 
 build:
-  merge_build_host: True  # [win]
-  number: 1
+  merge_build_host: true  # [win]
+  number: 0
   rpaths:
     - lib/R/lib/
     - lib/
@@ -32,11 +32,11 @@ requirements:
     - {{ posix }}zip               # [win]
   host:
     - r-base
-    - r-rcpp >=0.12.12
+    - r-rcpp >=1.0.0
   run:
     - r-base
     - {{ native }}gcc-libs         # [win]
-    - r-rcpp >=0.12.12
+    - r-rcpp >=1.0.0
 
 test:
   commands:
@@ -45,17 +45,12 @@ test:
 
 about:
   home: https://github.com/mhahsler/dbscan
-  license: GPL-2
-  summary: A fast reimplementation of several density-based algorithms of the DBSCAN family for
-    spatial data. Includes the DBSCAN (density-based spatial clustering of applications
-    with noise) and OPTICS (ordering points to identify the clustering structure) clustering
-    algorithms HDBSCAN (hierarchical DBSCAN) and the LOF (local outlier factor) algorithm.
-    The implementations use the kd-tree data structure (from library ANN) for faster
-    k-nearest neighbor search. An R interface to fast kNN and fixed-radius NN search
-    is also provided.
+  license: GPL-2.0-or-later
+  summary: A fast reimplementation of several density-based algorithms of the DBSCAN family for spatial data. Includes the DBSCAN (density-based spatial clustering of applications with noise) and OPTICS (ordering points to identify the clustering structure) clustering algorithms HDBSCAN (hierarchical DBSCAN) and the LOF
+    (local outlier factor) algorithm. The implementations use the kd-tree data structure (from library ANN) for faster k-nearest neighbor search. An R interface to fast kNN and fixed-radius NN search is also provided.
   license_family: GPL2
   license_file:
-    - '{{ environ["PREFIX"] }}/lib/R/share/licenses/GPL-2'
+    - {{ environ["PREFIX"] }}/lib/R/share/licenses/GPL-2
 
 extra:
   recipe-maintainers:
