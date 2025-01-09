@@ -1,4 +1,4 @@
-{% set version = "1.1-12" %}
+{% set version = "1.2-0" %}
 {% set posix = 'm2-' if win else '' %}
 
 package:
@@ -9,10 +9,10 @@ source:
   url:
     - {{ cran_mirror }}/src/contrib/dbscan_{{ version }}.tar.gz
     - {{ cran_mirror }}/src/contrib/Archive/dbscan/dbscan_{{ version }}.tar.gz
-  sha256: 56f8b1bdb392f8fb679a343b2ad5b4656c4f21d4ead85d6d81900d2f8b63ceea
+  sha256: 7209ba2c18171af62a0fddccd9e2ee0f2640dd955739baf89b3ba65162816267
 
 build:
-  number: 1
+  number: 0
   rpaths:
     - lib/R/lib/
     - lib/
@@ -30,12 +30,17 @@ requirements:
     - {{ posix }}sed               # [win]
     - {{ posix }}coreutils         # [win]
     - {{ posix }}zip               # [win]
+    - cross-r-base {{ r_base }}    # [build_platform != target_platform]
+    - r-rcpp >=1.0.0               # [build_platform != target_platform]
+    - r-generics
   host:
     - r-base
     - r-rcpp >=1.0.0
+    - r-generics
   run:
     - r-base
     - r-rcpp >=1.0.0
+    - r-generics
 
 test:
   commands:
@@ -47,7 +52,6 @@ about:
   license: GPL-2.0-or-later
   summary: A fast reimplementation of several density-based algorithms of the DBSCAN family for spatial data. Includes the DBSCAN (density-based spatial clustering of applications with noise) and OPTICS (ordering points to identify the clustering structure) clustering algorithms HDBSCAN (hierarchical DBSCAN) and the LOF
     (local outlier factor) algorithm. The implementations use the kd-tree data structure (from library ANN) for faster k-nearest neighbor search. An R interface to fast kNN and fixed-radius NN search is also provided.
-  license_family: GPL2
   license_file:
     - {{ environ["PREFIX"] }}/lib/R/share/licenses/GPL-2
 
