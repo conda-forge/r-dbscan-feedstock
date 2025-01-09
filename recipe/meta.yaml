@@ -32,12 +32,15 @@ requirements:
     - {{ posix }}zip               # [win]
     - cross-r-base {{ r_base }}    # [build_platform != target_platform]
     - r-rcpp >=1.0.0               # [build_platform != target_platform]
+    - r-generics
   host:
     - r-base
     - r-rcpp >=1.0.0
+    - r-generics
   run:
     - r-base
     - r-rcpp >=1.0.0
+    - r-generics
 
 test:
   commands:
