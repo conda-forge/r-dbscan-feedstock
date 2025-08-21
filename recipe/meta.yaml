@@ -1,4 +1,4 @@
-{% set version = "1.2.2" %}
+{% set version = "1.2.3" %}
 {% set posix = 'm2-' if win else '' %}
 
 package:
@@ -9,7 +9,7 @@ source:
   url:
     - {{ cran_mirror }}/src/contrib/dbscan_{{ version }}.tar.gz
     - {{ cran_mirror }}/src/contrib/Archive/dbscan/dbscan_{{ version }}.tar.gz
-  sha256: 0c3abdd122521d9be8cbdb3589a91a18ef18a3d00493fdb140fd932bae0fe343
+  sha256: 629a85cc0763ed743d1610d4184425f78d5fbc198f535a8c9a309f9d9838a6af
 
 build:
   number: 0
